@@ -13,7 +13,6 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -33,7 +32,6 @@ import {
   Instagram,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 const rentalDetails = {
   car: "Sedan Model X",
@@ -64,7 +62,7 @@ export default function Component() {
   const calculateTotal = () => {
     const optionsTotal = selectedOptions.reduce((total, optionId) => {
       const option = additionalOptions.find((opt) => opt.id === optionId);
-      return total + (option?.price || 0);
+      return total + (option?.price ?? 0);
     }, 0);
     return rentalDetails.basePrice + optionsTotal;
   };

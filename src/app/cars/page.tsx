@@ -43,13 +43,13 @@ const carList = Array(20)
 
 export default function Component() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [priceRange, setPriceRange] = useState([0, 200]);
+  const [priceRange, setPriceRange] = useState<number[]>([0, 200]);
   const carsPerPage = 9;
   const totalPages = Math.ceil(carList.length / carsPerPage);
 
   const filteredCars = carList.filter(
     (car) =>
-      car.pricePerDay >= priceRange[0] && car.pricePerDay <= priceRange[1],
+      car.pricePerDay >= priceRange[0]! && car.pricePerDay <= priceRange[1]!,
   );
 
   const indexOfLastCar = currentPage * carsPerPage;
